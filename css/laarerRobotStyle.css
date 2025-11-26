@@ -36,7 +36,7 @@ måtte også finne proposjonene til bildet slik at det ble bra og eksakte mål*/
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url(/images/laarerrobot/Naturfagslærer-Robot.png);/*Bildet er fra figma, der jeg er skisset det helt selv*/
+    background-image: url(/images/laarerrobot/naturfagslaarerRobot.png);/*Bildet er fra figma, der jeg er skisset det helt selv*/
     background-size: contain;
     background-position: center;
     z-index: 1;/*Holder bakgrunnen bakerst som du kommer til å se senere på roboten z-index 3 som ligger oppå samme med elevene*/
@@ -164,7 +164,7 @@ animation: boom 0.7s ease-out forwards;
     width: 150px; /*Jeg for velge hvor stor snakke boblen skal være*/
     height: 100px;
     background: transparent;
-    background-image: url(/images/laarerrobot/snakke-boble.png);/*Bildet er laget i figma av meg selv og hentet hit*/
+    background-image: url(/images/laarerrobot/snakkeBoble.png);/*Bildet er laget i figma av meg selv og hentet hit*/
     background-size: contain; /*garanterer at hele bildet vises*/    background-repeat: no-repeat;
     background-position: center;
     opacity: 0; /*Boblen vises ikke før noen tar musepekeren på roboten*/
