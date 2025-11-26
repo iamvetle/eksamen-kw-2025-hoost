@@ -1,0 +1,524 @@
+body {
+  background-color: cadetblue;
+  margin:0;
+}
+
+  .boks {
+    position: relative;
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .TSAbakgrunn {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 1;
+  }
+
+  .boks img:not(.TSAbakgrunn) {
+    position: absolute;
+    display: block;
+  }
+
+  .TSAbagasje {
+    top: 61.25%;
+    left: 49%;
+    width: 46%;
+    z-index: 5;
+  }
+
+  .TSAfly {
+    animation: flyingPlane 5s linear infinite;
+    top: 23%;
+    left: 39%;
+    width: 7%;
+  }
+
+  .TSAroedRobot {
+    top: 42.5%;
+    left: 0.02%;
+    width: 22%;
+  }
+
+  .boks:hover .TSAroedRobot {
+    animation: floatingRedRobot 5s ease-in-out infinite;
+  }
+
+  .TSAroedOyene {
+    top: 50.15%;
+    left: 7.3%;
+    width: 8.5%;
+    opacity: 0.5;
+  }
+
+  .boks:hover .TSAroedOyene {
+    animation: redEyesShine 5s ease-in-out infinite;
+  }
+
+  .TSAgladRobotEn {
+    top: 49.3%;
+    left: 6.7%;
+    width: 9.5%;
+  }
+
+  .boks:hover .TSAgladRobotEn {
+    animation: altBraLys 5s ease-in-out infinite;
+  }
+
+  .TSArobotEnLaser {
+    filter: hue-rotate(0deg) saturate(20);
+    top: 40%;
+    left: 20%;
+    width: 25%;
+    z-index: 7;
+    opacity: 35%;
+  }
+
+  .boks:hover .TSArobotEnLaser {
+    animation: redScanner 5s ease-in-out infinite;
+  }
+
+  .TSAaltBraLaser {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: rotate(2.5deg);
+    top: 37.48%;
+    left: 18.25%;
+    width: 29.15%;
+    z-index: 7;
+    opacity: 30%;
+  }
+
+  .boks:hover .TSAaltBraLaser {
+    animation: ingenFarligeGjenstander 5s ease-in-out infinite;
+  }
+
+  .TSAblaaRobot {
+    top: 38%;
+    left: 60.7%;
+    width: 25%;
+    animation: floatingBlueRobot 8s ease-in-out infinite;
+  }
+
+  .TSAblaaOyene {
+    top: 45.5%;
+    left: 69.7%;
+    z-index: 8;
+    width: 7.5%;
+    animation: blueEyesMovement 8s ease-in-out infinite;
+  }
+
+  .TSAsintRobotTo {
+    top: 43.8%;
+    left: 68.15%;
+    z-index: 9;
+    width: 10%;
+    animation: redEyesMad 8s linear infinite;
+  }
+
+  .TSArobotToLaser {
+    filter: hue-rotate(60deg) saturate(10);
+    top: 50%;
+    left: 67%;
+    width: 13%;
+    opacity: 40%;
+    z-index: 10;
+    animation: blueScanner 8s ease-in-out infinite;
+  }
+
+  .TSAfareLaser {
+    filter: hue-rotate(0deg) saturate(20);
+    top: 45.55%;
+    left: 64.1%;
+    width: 19%;
+    opacity: 35%;
+    z-index: 10;
+    animation: farligGjenstand 8s ease-in-out infinite;
+  }
+
+  .TSAinnholdBagasje {
+    top: 60.85%;
+    left: 69.33%;
+    width: 8.7%;
+    z-index: 9;
+    animation: bagasjeSynlig 8s ease-in-out infinite;
+  }
+
+  .TSAnavleringMetall {
+    top: 61.8%;
+    left: 31.7%;
+    width: 6.5%;
+    z-index: 6;
+    opacity: 0;
+  }
+  .boks:hover .TSAnavleringMetall {
+    animation: metallIkkeLov 5s ease-in-out infinite;
+  }
+
+@keyframes flyingPlane {
+  0% {
+    transform: translateX(-200%);
+    top: 23%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  10% {
+    transform: translateX(-150%);
+    top: 21%;
+    opacity: 0.5;
+  }
+
+  20% {
+    transform: translateX(-100%);
+    top: 20%;
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(50%);
+    top: 18%;
+  }
+
+  80% {
+    transform: translateX(200%);
+    top: 16%;
+    opacity: 0.1;
+  }
+  100% {
+    transform: translateX(300%);
+    top: 15%;
+    opacity: 0;
+  }
+}
+
+@keyframes redEyesShine {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+
+  25% {
+    filter: hue-rotate(0deg) saturate(12);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15%);
+    filter: hue-rotate(0deg) saturate(20);
+    opacity: 0;
+  }
+
+  75% {
+    filter: hue-rotate(0deg) saturate(12);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+}
+
+@keyframes altBraLys {
+  0% {
+    filter: hue-rotate(60deg) saturate(40);
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  25% {
+    filter: hue-rotate(60deg) saturate(40);
+    opacity: 0;
+  }
+  50% {
+    filter: hue-rotate(60deg) saturate(40);
+    transform: translateY(-15%);
+    opacity: 1;
+  }
+
+  75% {
+    filter: hue-rotate(60deg) saturate(40);
+    opacity: 0;
+  }
+
+  100% {
+    filter: hue-rotate(60deg) saturate(40);
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes floatingRedRobot {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes floatingBlueRobot {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-2%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes blueEyesMovement {
+  0% {
+    filter: hue-rotate(60deg) saturate(20);
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  28.5% {
+    filter: hue-rotate(60deg) saturate(20);
+    transform: translateY(-13%);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-15%);
+    opacity: 0;
+  }
+
+  71.5% {
+    filter: hue-rotate(60deg) saturate(20);
+    transform: translateY(-13%);
+    opacity: 1;
+  }
+
+  100% {
+    filter: hue-rotate(60deg) saturate(20);
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes redEyesMad {
+  0% {
+    opacity: 0;
+  }
+
+  28.5% {
+    opacity: 0;
+  }
+
+  30% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translateY(-13.5%);
+    opacity: 0.8;
+  }
+  50% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translateY(-15%);
+    opacity: 1;
+  }
+  70% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translateY(-13.5%);
+    opacity: 0.8;
+  }
+
+  71.5% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes redScanner {
+  0% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    filter: hue-rotate(0deg) saturate(50);
+    transform: translate(0, 50px) rotate(15deg);
+  }
+  50% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translate(0, 100px) rotate(30deg);
+  }
+  75% {
+    filter: hue-rotate(0deg) saturate(50);
+    transform: translate(0, 50px) rotate(15deg);
+  }
+  100% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes metallIkkeLov {
+  0% {
+    opacity: 0;
+  }
+
+  24% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  76% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ingenFarligeGjenstander {
+  0% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translate(0, 0) rotate(3deg);
+    opacity: 0.4;
+  }
+
+  20% {
+    opacity: 0;
+  }
+
+  25% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translate(0, 50px) rotate(18deg);
+    opacity: 0;
+  }
+
+  50% {
+    top: 37.65%;
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translate(0, 100px) rotate(32.8deg);
+    opacity: 0.4;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  75% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translate(0, 50px) rotate(18deg);
+    opacity: 0;
+  }
+  100% {
+    filter: hue-rotate(0deg) saturate(20);
+    transform: translate(0, 0) rotate(3deg);
+    opacity: 0.4;
+  }
+}
+
+@keyframes blueScanner {
+  0% {
+    filter: hue-rotate(60deg) saturate(40);
+    transform: translateY(0%);
+    opacity: 0.5;
+  }
+
+  25% {
+    filter: hue-rotate(60deg) saturate(40);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateY(5%);
+    opacity: 0;
+  }
+
+  75% {
+    filter: hue-rotate(60deg) saturate(40);
+    opacity: 0.25;
+  }
+
+  100% {
+    filter: hue-rotate(60deg) saturate(40);
+    transform: translateY(0%);
+    opacity: 0.5;
+  }
+}
+
+@keyframes farligGjenstand {
+  0% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translateY(0%);
+    opacity: 0;
+  }
+
+  25% {
+    filter: hue-rotate(0deg) saturate(30);
+    opacity: 0;
+  }
+
+  50% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translateY(5%);
+    opacity: 0.3;
+  }
+
+  75% {
+    filter: hue-rotate(0deg) saturate(30);
+    opacity: 0;
+  }
+
+  100% {
+    filter: hue-rotate(0deg) saturate(30);
+    transform: translateY(0%);
+    opacity: 0;
+  }
+}
+
+@keyframes bagasjeSynlig {
+  0% {
+    opacity: 0;
+  }
+
+  28.5% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  71.5% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

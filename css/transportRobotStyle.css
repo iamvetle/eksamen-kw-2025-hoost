@@ -1,0 +1,409 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    /* Himmel container, som er den bakerste bakgrunnen */
+    .sky {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%); /*Fargen som brukes på den bakgrunnsfargen med fading til hvit farge*/
+        overflow: hidden;
+    }
+    /* Felles stil for alle skyer - Fått bistand av Gemini AI for å ha felles egenskaper i classene */
+    [class^="cloud"] {
+        position: absolute;
+        aspect-ratio: 3.3 / 1; 
+        background: #fff;      /* Gir skyene hvit farge (ellers er de usynlige) */
+        border-radius: 100px;  /* Gjør selve hovedformen rund i kantene */
+        z-index: 4;            /*  Legger dem OVER main-container (som har z-index 3) */
+        opacity: 0.6;       /*  Gjør skyene litt gjennomsiktige */
+    }
+    /*Dette er en samling av alle classene og egenskaper som skal legges på alle de som har en class cloud */
+    [class^="cloud"]::before,
+    [class^="cloud"]::after {
+        z-index: -1;
+    }
+    [class^="cloud"]:hover .cloud-text { /* Gjør Teksten i en av skyene til rød når man hover over den*/
+    color: red;
+    }
+    /* Sky 1, den som har tekstboksen*/
+    .cloud1 {
+        width: 20%;        
+        top: 5%;
+        left: -20%;        /* Start utenfor skjermen (samme som bredden) */
+        animation: bevegelse1 45s linear infinite; /* Animasjon som gjør at skyen beveger seg og tiden den varer */
+        }
+/*Uten denne så ville skyen vært en kjedelig avlang boks, gjør det mulig å få mer fylde. Before er det som lages til venstre i skyen*/
+    .cloud1::before {
+        width: 50%;        
+        height: 133%;      
+        top: -66%;         
+        left: 15%;         
+        position: absolute;
+        content: '';
+        background: inherit; /* Arver farge fra hovedskyen */
+        border-radius: 50%;
+    }
+/*Denne lager den høyre humpen på skyen*/
+    .cloud1::after {
+        width: 60%;        
+        height: 116%;      
+        top: -50%;         
+        right: 15%;       
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    /* Sky 2*/
+    .cloud2 {
+        width: 15%;        
+        aspect-ratio: 3 / 1; 
+        top: 12%;
+        left: -15%;
+        animation: bevegelse2 55s linear infinite; /*Tiden denne skyen skal bruke og hvilken bevegelse den skal bruke*/
+        animation-delay: 3s; /*Denne skal starte etter 1 sekund*/
+    }
+/*Uten denne så ville skyen vært en kjedelig avlang boks, gjør det mulig å få mer fylde. Before er det som lages til venstre i skyen*/
+    .cloud2::before {
+        width: 53%;        
+        height: 120%;      
+        top: -60%;        
+        left: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+/*Denne lager den høyre humpen på skyen*/
+    .cloud2::after {
+        width: 60%;        
+        height: 110%;      
+        top: -50%;         
+        right: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    /* Sky 3*/
+    .cloud3 {
+        width: 12%;        
+        aspect-ratio: 3 / 1;
+        top: 20%;
+        left: -12%;
+        animation: bevegelse3 50s linear infinite; /*Tiden denne skyen skal bruke og hvilken bevegelse den skal bruke*/
+        animation-delay: 9s; /*Denne skal starte etter 6 sekund*/
+    }
+/*Uten denne så ville skyen vært en kjedelig avlang boks, gjør det mulig å få mer fylde. Before er det som lages til venstre i skyen*/
+    .cloud3::before {
+        width: 50%;        
+        height: 125%;      
+        top: -62%;         
+        left: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+/*Denne lager den høyre humpen på skyen*/
+    .cloud3::after {
+        width: 58%;        
+        height: 112%;      
+        top: -50%;        
+        right: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    /* Sky 4 */
+    .cloud4 {
+        width: 18%;        
+        aspect-ratio: 3.2 / 1;
+        top: 8%;
+        left: -20%;
+        animation: bevegelse4 60s linear infinite; /*Tiden denne skyen skal bruke og hvilken bevegelse den skal bruke*/
+        animation-delay: 25s; /*Denne skal starte etter 25 sekund*/
+    }
+/*Uten denne så ville skyen vært en kjedelig avlang boks, gjør det mulig å få mer fylde. Before er det som lages til venstre i skyen*/
+    .cloud4::before {
+        width: 50%;        
+        height: 125%;      
+        top: -62%;         
+        left: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+/*Denne lager den høyre humpen på skyen*/
+    .cloud4::after {
+        width: 58%;        
+        height: 112%;      
+        top: -50%;        
+        right: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+
+    /* Sky 5 */
+    .cloud5 {
+        width: 14%;       
+        aspect-ratio: 3.1 / 1;
+        top: 15%;
+        left: -14%;
+        animation: bevegelse5 48s linear infinite;/*Tiden denne skyen skal bruke og hvilken bevegelse den skal bruke*/
+        animation-delay: 18s; /*Denne skal starte etter 18 sekund*/
+    }
+   /*Uten denne så ville skyen vært en kjedelig avlang boks, gjør det mulig å få mer fylde. Before er det som lages til venstre i skyen*/
+    .cloud5::before {
+      width: 50%;        
+        height: 125%;      
+        top: -62%;         
+        left: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+/*Denne lager den høyre humpen på skyen*/
+    .cloud5::after {
+        width: 58%;        
+        height: 112%;      
+        top: -50%;        
+        right: 16%;
+        position: absolute;
+        content: '';
+        background: inherit;
+        border-radius: 50%;
+    }
+    /* Animasjon av skyen 1 som gjør at skyen beveger seg fra venstre til høyre */
+    @keyframes bevegelse1 {
+        0% { left: -20%; }   /* Start utenfor venstre kant */
+        100% { left: 100%; } /* Gå helt ut til høyre kant */
+    }
+
+    /* Animasjon av skyen 2 som gjør at skyen beveger seg fra venstre til høyre */
+    @keyframes bevegelse2 {
+        0% {
+            left: -150px;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+    /* Animasjon av skyen 3 som gjør at skyen beveger seg fra venstre til høyre */
+    @keyframes bevegelse3 {
+        0% {
+            left: -120px;
+        }
+        100% {
+            left: 100%;
+        }
+    }/* Animasjon av skyen 4 som gjør at skyen beveger seg fra venstre til høyre */
+    @keyframes bevegelse4 {
+        0% {
+            left: -180px;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+    /* Animasjon av skyen 5 som gjør at skyen beveger seg fra venstre til høyre */
+    @keyframes bevegelse5 {
+        0% {
+            left: -140px;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+    /* Hovedkontaineren med bakgrunnsbilde av byen*/
+    .main-container {
+        width: 100%;
+        height: 100%;
+        background-image: url(/images/transportrobot/husbakgrunn4.png); /*Denne er Generert av Gemini AI - */
+        background-size: cover;  
+        background-repeat: no-repeat;
+        background-position: center;
+        perspective: 1000px;
+        position: relative;
+        z-index: 3;
+    }   
+    /*bil kontaineren som kjører fra høyre til venstre*/
+    .bil-container {
+        width: 15%;
+        height: 15%;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        background-image: url(/images/transportrobot/car2.png); /*Denne er Generert av Gemini AI - */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation-name: drive;
+        animation-duration: 15s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    /*Animasjonen som gjør at bilen flyter fra høyre til venstre, den blir scaler seg større langs veien.*/
+    @keyframes drive {
+        from {
+            transform: translateX(60vw) translateY(8vh) scale(0.6); /*TranslateX og Y er start og slutt punktet i bildet hvor bilen skal følge*/
+        }
+        to {
+            transform: translateX(-120vw) translateY(44vh) scale(0.9); /*Hvor bilen skal kjøre til*/
+        }
+    }
+    /*bil kontaineren som kjører fra venstre til høyre*/
+    .bil-container2 {
+        width: 15%;
+        height: 15%;
+        position: absolute;
+        top: 60%;
+        background-image: url(/images/transportrobot/car2-1.png); /*Denne er Generert av Gemini AI - */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation-name: drive-back;
+        animation-duration: 15s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        transform: scaleX(-1);
+    }
+    /*bil kontainer active, gjør at den stopper animasjonen hvis man trykker på den*/
+
+    .bil-container:active
+    {
+        animation-play-state: paused;
+        
+    }   
+    /*bil kontainer active, gjør at den stopper animasjonen hvis man trykker på den*/
+    .bil-container2:active
+    {
+        animation-play-state: paused;
+        
+    }    
+    /*Selve animasjonen for den bilen som kjører andre veien*/
+    @keyframes drive-back {
+        from {
+            transform: translateX(-100vw) translateY(45vh) scale(0.9) scaleX(-1);
+        }
+        to {
+            transform: translateX(100vw) translateY(04vh) scale(0.6) scaleX(-1);
+        }
+    }
+    /*Robot kontaineren for roboten som er midt på bildet*/
+    .robot-container {
+        width: 10%;
+        height: 10%;
+        position: absolute;
+        background-image: url(/images/transportrobot/robotblue.png);  /*Denne er Generert av Gemini AI - lagd etter skisser fra Figma */
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top:65%;
+        left: 46%;
+        z-index: 20;
+
+    }
+    /*Viser hva som skjer med roboten hvis man trykker på den, gjør at robotøyene blir røde*/
+    .robot-container:active {
+        background-image: url(/images/transportrobot/robotred.png); /*Denne er Generert av Gemini AI - lagd etter skisser fra Figma */
+    }
+
+
+    /* Teksten som er inne i skyene */
+    .cloud-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;         /* Ligger øverst */
+        color: black;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        white-space: nowrap; /* Hindrer at teksten brytes til flere linjer */
+        pointer-events: none; /* Musen ignorerer teksten (klikker rett igjennom) */
+    }
+
+    /*Robot fly kontaineren uten roboten inni*/
+    .robotfly-container {
+        width: 20%;
+        height: 20%;
+        position: absolute;
+        background-image: url(/images/transportrobot/utenrobot.png); /*Denne er Generert av Gemini AI - lagd etter skisser fra Figma */
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: 10%;
+        left: 0%;
+        z-index: 10;
+        animation-name: fly-robot;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    /*Robot fly kontainer hover, gjør at roboten vises når man fører musen over robotflyet*/
+    .robotfly-container:hover {
+        background-image: url(/images/transportrobot/medrobot1.png); /*Denne er Generert av Gemini AI - lagd etter skisser fra Figma */
+    }
+    /*Animasjonen som gjør at robotflyet flyr fra venstre til høyre*/
+    @keyframes fly-robot {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(100vw);
+        }
+    }
+    /* Tekstboblen over roboten */
+    .tekst-boble {
+        position: absolute;
+        bottom: 100%; 
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 20px; 
+        background-color: rgba(255, 255, 255, 0.5);
+        color: black;
+        padding: 15px 20px;
+        border-radius: 20px; /* Gjør tekstboksen rundere i kanten */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+        font-family: 'Arial', sans-serif;
+        font-size: 16px; /*Eneste som ikke er gjort i % som gjør at boksen er like stor uansett oppløsning*/
+        font-weight: bold;
+        white-space: nowrap; 
+        z-index: 100; 
+        opacity: 1; 
+    }
+    /* Pilen under tekstboksen - kun for utseende skyld på tekstboblen */
+    .tekst-boble::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -10px; 
+        width: 0;
+        height: 0;
+        border-top: 10px solid #ffffff; 
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        opacity: 0.5; /* Samme gjennomsiktighet som tekstboksen */
+    }
+

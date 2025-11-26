@@ -1,0 +1,314 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Legger til bakgrunnen for siden. Gjør også at den tar hele resten av plassen på siden vertikalt utenom gresset og bakken */
+#main {
+	flex: 1;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-image: url(/images/vekterrobot/background.webp);
+}
+
+/* Bestemmer størrelsen på gresset*/
+#grass {
+	width: 100%;
+	height: 135px;
+	background-color: #274820;
+}
+
+/* Bestemmer størrelsen på bakken*/
+#ground {
+	width: 100%;
+	height: 54px;
+	background-color: #494848;
+}
+
+/* Bestemmer størrelsen på huset*/
+#house {
+	background-color: #323154;
+	width: 500px;
+	height: 550px;
+
+	position: absolute;
+	bottom: 54px;
+	right: 70px;
+}
+
+/* Gjør at teksten på klubbhuset blir stort og tydelig*/
+#house p {
+	text-align: center;
+	color: white;
+	font-size: 48px;
+	margin-top: 71px;
+}
+
+#flamingo-sign {
+	height: 80px;
+	position: absolute;
+	bottom: 120px;
+	right: 70px;
+}
+
+/* Gjør at døren som er på huset blir på midten og sentrert*/
+#door {
+	width: 120px;
+	height: 212px;
+	background-color: #735638;
+
+	position: absolute;
+	bottom: 54px;
+	right: 320px;
+	transform: translateX(50%);
+
+	cursor: pointer;
+}
+
+/* Gjør at de øverste vinduene har avstand mellom seg*/
+#upper-windows {
+	display: flex;
+	margin-top: 16px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 70%;
+	justify-content: space-between;
+}
+
+/* Gjør at de nedereste vinduene har avstand mellom seg*/
+#lower-windows {
+	display: flex;
+	margin-top: 32px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 70%;
+	justify-content: space-between;
+}
+
+/* Legger til bakgrunn på vinduene slik at det ser ut som at det er diskolys inne i bygningen*/
+.window {
+	width: 70px;
+	height: 70px;
+	background-color: white;
+
+	background-image: url(/images/vekterrobot/fast-changing-color.gif);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#doorknob {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #d9d9d9;
+
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* Plasserer roboten*/
+#vekterrobot {
+	width: 150px;
+	height: 200px;
+
+	position: absolute;
+
+	right: 80px;
+	bottom: 54px;
+
+	z-index: 10;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-image: url(/images/vekterrobot/vekter-robot.svg);
+
+	animation: moveRobot 3s ease-in-out infinite;
+}
+
+/* Gjør at når musepekeren er over roboten så pauser animasjonen som spilles */
+#vekterrobot:hover {
+	animation-play-state: paused;
+}
+
+/* Gjør at når musepekeren er over roboten så blir snakkeboblen synlig */
+#vekterrobot:hover #vekterrobot-snakkeboble {
+	display: block;
+}
+
+/* Gjør at når musepekeren er over roboten så får han røde øyne*/
+#vekterrobot:hover #lazer-eyes {
+	display: block;
+}
+
+
+/* Gjør at snakeboblen ikke til vanlig er synlig*/
+#vekterrobot-snakkeboble {
+	display: none;
+
+	position: absolute;
+	top: -190px;
+	left: -120px;
+}
+
+/* Gjør at de røde øynene til roboten ikke til vanlig er synlig*/
+#lazer-eyes {
+	display: none;
+
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	height: 5px;
+
+	transform: translateX(-50%);
+}
+
+/* Animasjonen som får roboten til å bevege seg*/
+@keyframes moveRobot {
+	50% {
+		right: 400px;
+	}
+}
+
+#tree {
+	position: absolute;
+	bottom: 150px;
+	left: 40px;
+	width: 220px;
+}
+
+.guys {
+	height: 190px;
+	width: 140px;
+	position: absolute;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+
+	bottom: 54px;
+}
+
+.girls {
+	height: 170px;
+	width: 130px;
+	position: absolute;
+
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+
+	bottom: 54px;
+}
+
+/* Bestemmer hvordan fyren som er nærmest klubben ser ut*/
+#guy-one {
+	background-image: url(/images/vekterrobot/guy-type-a.webp);
+
+	right: 600px;
+}
+
+#guy-one-snakkeboble {
+	display: none;
+
+	position: absolute;
+	top: -190px;
+	left: -130px;
+}
+
+/* Viser at den første fyren blir sur på robotten når musepekeren er over han*/
+#guy-one:hover {
+	background-image: url(/images/vekterrobot/guy-type-a-angry.webp);
+}
+
+/* Bestemer at den første fyren får en snakkeboblen når musepekeren er over han*/
+#guy-one:hover #guy-one-snakkeboble {
+	display: block;
+}
+
+/* Bestemmer hvordan jenten som er nærmest klubben ser ut*/
+#girl-one {
+	background-image: url(/images/vekterrobot/girl-type-a.webp);
+
+	right: 700px;
+}
+
+/* Bestemmer hvordan den andre jenten ser ut*/
+
+#girl-two {
+	background-image: url(/images/vekterrobot/girl-type-b.webp);
+
+	right: 900px;
+}
+
+#girl-two-tankeboble {
+	display: none;
+
+	position: absolute;
+	top: -240px;
+	left: 80px;
+}
+
+/* Bestemer at den andre jenta får en snakkeboblen når musepekeren er over han*/
+
+#girl-two:hover #girl-two-tankeboble {
+	display: block;
+}
+
+
+/* Bestemmer hvordan han andre fyren ser ut*/
+#guy-two {
+	background-image: url(/images/vekterrobot/guy-type-b.webp);
+
+	right: 1000px;
+}
+
+
+/* Viser at det er full fest i klubben når døren blir trykket på*/
+#door:active {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(/images/vekterrobot/laser-rave.gif);
+
+	width: 120px;
+	height: 212px;
+}
+
+#door:active #doorknob {
+	right: 125px;
+}
+
+
+/* Gjør at robotten slutter å bevege på seg når døren blir trykket på*/
+#door:active ~ #vekterrobot {
+	animation-play-state: paused;
+}
+
+#open-door {
+	display: none;
+
+	width: 10px;
+	height: 212px;
+	background-color: #735638;
+
+	position: absolute;
+	bottom: 54px;
+	right: 380px;
+}
+
+/* Gjør at det ser ut som døren er åpen når døren blir trykket på*/
+#door:active ~ #open-door {
+	display: block;
+}

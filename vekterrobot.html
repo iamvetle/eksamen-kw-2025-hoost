@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/vekterRobotStyle.css">
+	</head>
+	<body>
+
+		<!-- Fører deg tilabke til den tidligere siden-->
+		<a href="/scenarioer.html">
+			<img
+				id="back-button"
+				src="/images/back-button.webp"
+				alt="Tilbakeknapp"
+			>
+		</a>
+
+		<!-- Alt som ikke er gresset eller bakken er i main-->
+		<div id="main">
+			<img id="tree" src="/images/vekterrobot/tree.webp" alt="Et tre.">
+
+			<div id="guy-two" class="guys"></div>
+			<div id="girl-two" class="girls">
+				<img
+					id="girl-two-tankeboble"
+					src="/images/vekterrobot/girl-type-b-tankeboble.webp"
+					alt="Tankeboble for den andre jenta i køen hvor det står 'Håper falsk leg funker...'"
+				>
+			</div>
+
+			<div id="girl-one" class="girls"></div>
+			<div id="guy-one" class="guys">
+				<img
+					id="guy-one-snakkeboble"
+					src="/images/vekterrobot/guy-type-a-snakkeboble.webp"
+					alt="Snakkeboble for den første gutten i køen hvor det står 'Jeg blir jo 20 år imorra!' "
+				>
+			</div>
+
+			<!-- Selvet klubben/huset -->
+			<div id="house">
+				<p>DOFLAMINGO CLUB</p>
+
+				<div id="upper-windows">
+					<div class="window" id="window-1"></div>
+					<div class="window" id="window-2"></div>
+					<div class="window" id="window-3"></div>
+				</div>
+
+				<div id="lower-windows">
+					<div class="window" id="window-4"></div>
+					<div class="window" id="window-5"></div>
+					<div class="window" id="window-6"></div>
+				</div>
+
+				<img
+					id="flamingo-sign"
+					src="/images/vekterrobot/flamingo.webp"
+					alt="Skilt av en flamingo"
+				>
+			</div>
+
+			<div id="door">
+				<div id="doorknob"></div>
+			</div>
+
+			<!-- Ved å ikke ha open-door i hus-elementet så kan jeg stoppe animasjonen til vekterrobot med ~ -->
+			<div id="open-door"></div>
+
+			<div id="vekterrobot">
+				<img
+					id="lazer-eyes"
+					src="images/vekterrobot/robot-lazer-eyes.svg"
+					alt="Laser øyne."
+				>
+				<img
+					id="vekterrobot-snakkeboble"
+					src="/images/vekterrobot/robot-snakkeboble.webp"
+					alt="Snakkeboble for roboten hvor det står 'Dere er ikke gamle nok'."
+				>
+			</div>
+		</div>
+
+		<div id="grass"></div>
+		<div id="ground"></div>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: black;
+
+	/* Hindrer at en scrollbar kommer når galaksebildet roterer*/
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+
+
+/* Posisjonerer stjernene */
+.star {
+	position: absolute;
+	width: 10px;
+}
+
+#star-1 {
+	top: 500px;
+	left: 139px;
+	z-index: 2;
+	animation-delay: 0s;
+}
+
+#star-2 {
+	top: 100px;
+	left: 168px;
+	z-index: 2;
+	animation-delay: 0.5s;
+}
+
+#star-3 {
+	top: 130px;
+	left: 700px;
+	z-index: 2;
+	animation-delay: 1s;
+}
+
+#star-4 {
+	top: 50px;
+	right: 500px;
+	z-index: 2;
+	animation-delay: 1.5s;
+}
+
+#star-5 {
+	left: 700px;
+	bottom: 100px;
+	z-index: 2;
+	animation-delay: 2s;
+}
+
+#star-6 {
+	left: 400px;
+	bottom: 100px;
+	z-index: 2;
+	animation-delay: 2.5s;
+}
+
+#star-7 {
+	right: 200px;
+	bottom: 50px;
+	z-index: 2;
+	animation-delay: 0.8s;
+}
+
+/* Legger til animasjon på stjernene */
+.star {
+	transition: transform 1s ease-in-out;
+	animation: twinkle 3s ease-in-out infinite;
+}
+
+.star:hover {
+	transform: scale(1.2) rotate(180deg);
+}
+
+/* Gjør at stjernene "gløder" */
+@keyframes twinkle {
+	0%,
+	100% {
+		opacity: 0.3;
+	}
+	50% {
+		opacity: 1;
+	}
+}

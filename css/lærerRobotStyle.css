@@ -1,0 +1,350 @@
+body{
+    /*bruker margin for å fjerne skrollbarene som kom opp på sidne*/
+    margin: 0;
+    background: black;
+}
+/* Ramme rundt hele siden,
+width: 100vw; height: 100vh; gjør det slik at rammen alltid dekker hele skjermen. */
+.ramme{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+/*Her så fikk jeg hjelp av chatGPT sånn at bakgrunnsbildet skalerer riktig, jeg hadde 
+veldig mye problemer med dette, så spurte ai om hjelp, men kopierte ikke rett inn, 
+men heller spurte ai om hvordan man kunne løse et slikt porblem. og med mye feiling og testing så ble det slik.
+måtte også finne proposjonene til bildet slik at det ble bra og eksakte mål*/
+
+.rammeforbakgrunn{
+    position: relative;
+    width: 100vw;
+    /*jeg lærte "calc" som lar deg gjøre matte inne i css og er så regens 
+    holde propsjonene til bagrundsbilde riktig*/
+    height: calc(100vw * 1456 / 2048);
+    max-height: 100vh;
+    /*akkurat det samme er med "calc" for bredden*/
+    max-width: calc(100vh * 2048 / 1456);
+    
+}
+.bakgrunnbilde{
+    position: absolute;
+    /*gjør det slik at den dekker hele rammeforbakgrunn, er derfor alt er på 0*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url("Naturfagslærer-Robot.png");/*Bildet er fra figma, der jeg er skisset det helt selv*/
+    background-size: contain;
+    background-position: center;
+    z-index: 1;/*Holder bakgrunnen bakerst som du kommer til å se senere på roboten z-index 3 som ligger oppå samme med elevene*/
+}
+/*Begre og eksplosjon  */
+.begre {
+    position: absolute;
+    left: 42.8%; 
+    top: 24.8%;
+    width: 160px; 
+    height: 70px;
+    display: flex; /*Jeg hadde problemer med at begrene landa oppå hverandre så jeg brukte flexbox for å ordne det*/
+    justify-content: flex-start;
+    gap: 15px; 
+    z-index: 3;
+}
+/*Under på denne delen med .beger,.begre osv. så fikk jeg litt hjelp av chatgpt mot slutten, 
+jeg hadde laget animasjonen med begrene, men da bare skjedde ekslposjonen ut av tynne lufta,
+uten at noe blannet seg sammen. Jeg prøvde og feila veldig mye og til slutt spurte ai om hjelp.
+og da prompta slik: jeg tok et skjermbildet av begerne, forklarete koden til den og hva poroblemet var, 
+og ba den i meg forskjellige måter å kunne løse et slikt problem på. Og stil slutt fikk jeg det til og lærte mye, men ved hjelp av ai.¨
+/*dette er da dimensjonene til begerne og, da bakgrunnsfarge og border*/
+.beger{
+    width: 38px;
+    height: 60px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 4px;
+    position: relative;
+    transition: transform 0.2s, filter 0.2s;
+}
+/*med after så lager jeg det bergerne er fylte med, altså da bare farge
+men forestiller skjemikalier. Og dette ved hjelp av pseudo-element som sagt tidligere*/
+.beger::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 45%;
+    bottom: 0;
+}
+.beger.gronn::after { background: green; }
+.beger.beger.hvit::after { background: white; }
+.beger.bla::after { background: blue; }
+/*under kommer hover effektene for de tre begrene der den i midten er der løsningene blandes.*/
+.begre:hover .beger:nth-child(2)::after {
+    background: purple; transition: background 0.7s; 
+}
+/*Jeg ville lage en liten animasjon hvis du kan kalle det, der når du holder pekeren
+over hver av begerne, så vil de lyse.*/
+.beger:hover{
+    transform: translateY(-6px);
+}
+.beger:hover::after {
+    filter: brightness(1.3);
+}
+/*Her kommer det som skal forestille at man heller de to løsningene ytterst 
+mot midt og da blandes det sammen og en reaksjon skjer*/
+.begre:hover .beger:nth-child(1) {
+    transform: rotate(10deg); 
+}
+.begre:hover .beger:nth-child(3) {
+    transform: rotate(-10deg); 
+}
+
+/*Her så "tegner" jeg opp den eksplosjonen som skal skje med css, men er ikke helt fornøyd 
+og kanskje bytter til gif.*/
+.eksplosjon {
+    position: absolute;
+    left: 52%;
+    top: 23%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /*Gjøres om til en rikel*/
+    background: radial-gradient(circle,
+        yellow,
+        orange,
+        red
+    );
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+/*her blir det fortalt at eksplosjonen skal kun skje når eller hvis 
+begre blir hoveret over*/
+/*her blir det fortalt at eksplosjonen skal kun skje når eller hvis 
+begre blir hoveret over*/
+.begre:hover ~ .eksplosjon {
+animation: boom 0.7s ease-out forwards;
+    animation-delay: 0.7s;
+}
+/*Her brukes keyframes for at det skal skalere, men til slutt så forsvinner den, frem stilt med opacity: 0*/
+@keyframes boom {
+    0% { transform: translate(-50%, -50%) scale(0.1); opacity: 0.8; }
+    40%{ transform: translate(-50%, -50%) scale(2.5); opacity: 1; }
+    100%{ transform: translate(-50%, -50%) scale(4); opacity: 0; }
+}
+/*Roboten og alt annet med roboten kommer under her*/
+.robot {
+    position: absolute;
+    left: 63%;
+    top: 13.5%;
+    width: 60px;
+    height: 170px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*Forteller at når end hover skjer på roboten så skal øynene bli røde. */
+.robot:hover .robot-oyne::before,
+.robot:hover .robot-oyne::after {
+    background: red;
+}
+.robot:hover::before {
+    opacity: 1;
+}
+/*Snakkeboble*/
+.robot::before {
+    content: "";/*jeg bruker content, for at det skal være et usnynlig ekstra elment
+    sånn at jeg slipper å lage en div*/
+    position: absolute;
+    top: -80px; 
+    left: -50%;
+    transform: translateX(-50%);
+    width: 150px; /*Jeg for velge hvor stor snakke boblen skal være*/
+    height: 100px;
+    background: transparent;
+    background-image: url("snakke-boble.png");/*Bildet er laget i figma av meg selv og hentet hit*/
+    background-size: contain; /*garanterer at hele bildet vises*/    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0; /*Boblen vises ikke før noen tar musepekeren på roboten*/
+    transition: opacity 0.3s; /*Dette gjør sånn at den kommer smooth inn i nettsiden*/
+    z-index: 5;
+}
+/*under kommer alle robot delene som blir laget med css*/
+.robot-hode {
+    width: 75px;
+    height: 75px;
+    background: lightgray;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 3px 6px black;
+}
+.robot-briller{
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 30%;
+    background: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    opacity: 0.9;
+}
+.robot-oyne {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+/*Øynene må lages med before og after fordi det de er animert med hover*/
+.robot-oyne::before,
+.robot-oyne::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+}
+.robot-munn {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 6px;
+    background: darkgray;
+    border-radius: 4px;
+}
+.robot-kropp {
+    width: 60px;
+    height: 80px;
+    background: black;
+    border-radius: 18px;
+    margin-top: 5px;
+    position: relative;
+}
+/* labbfrakk knappene*/
+.robot-knapp {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.robot-knapp:nth-child(1) { top: 12%; }
+.robot-knapp:nth-child(2) { top: 38%; }
+.robot-knapp:nth-child(3) { top: 65%; }
+/*her lager jeg elevene og deres reaksjon på eksplosjoenen*/
+.elev {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    z-index: 3;
+}
+/* Jeg plasserer de på deres pult på baklgrundsbildet.*/
+.elev1 { left: 20%; top: 52%; }
+.elev2 { left: 30%; top: 52.2%; }
+.elev3 { left: 76%; top: 50%; }
+.elev4 { left: 65%; top: 50.5%; }
+.elev5 { left: 20%; top: 80%; }
+.elev6 { left: 30%; top: 80%; }
+.elev7 { left: 65%; top: 80%; }
+.elev8 { left: 75%; top: 80%; }
+.elev-hode {
+    width: 55px;
+    height: 55px;
+    position: relative;
+}
+.elev-ansikt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: lightsalmon;
+    border-radius: 50%;
+}
+/*her kommmer hår og annsiktene til elevene*/
+.elev-har {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 26px;
+    border-radius: 50% 50% 40% 40%;
+}
+.har1 { background: black; }
+.har2 { background: chocolate; }
+.har3 { background: yellow; }
+.har4 { background: brown; }
+.har5 { background: darkred; }
+.har6 { background: darkblue; }
+.har7 { background: purple; }
+.har8 { background: darkgreen; }
+.elev-oyne {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    display: flex;
+    justify-content: space-between;
+}
+/*her blir det laget med before og after fordi det er animert siden de ragerer på eksplosjonene*/
+.elev-oyne::before,
+.elev-oyne::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: black;
+    border-radius: 50%;
+}
+.elev-munn {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 6px;
+    background: brown;
+    border-radius: 4px;
+}
+/*Robot armene kom jeg litt sent til er derfor de er så langt nede i css fila.*/
+.robot-arm {
+    width: 16px;
+    height: 65px;
+    background: black;
+    position: absolute;
+    top: 78px;
+    border-radius: 10px;
+}
+.robot-arm.venstre { left: -12px; }
+.robot-arm.hoyre { right: -12px; }
+/*Her kommer reaksjoene og eksplosjonen*/
+/*og jeg bruker det som kalles sibling combinator fordi det skal bare skje når begre blir 
+hoveret på.*/
+.begre:hover ~ .elev .elev-hode {
+    animation: sjokkReaksjon 0.5s ease-out forwards; 
+}   
+/*her lager jeg det slik at det blir større øyne på elevene, kun når det blir hoveret over begrene*/
+.begre:hover ~ .elev .elev-oyne::before,
+.begre:hover ~ .elev .elev-oyne::after {
+    width: 12px; 
+    height: 12px;
+    background: black;
+    transition: width 0.3s, height 0.3s;
+}
+/*keyframes for å lage denne reaskjoen som skal gi en hopp effekt på de elvene, slik at det ser ut som de hopper.*/
+@keyframes sjokkReaksjon{
+    from { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    to { transform: translateY(0); }
+}

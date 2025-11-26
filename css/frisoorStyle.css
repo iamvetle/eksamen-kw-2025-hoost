@@ -1,0 +1,538 @@
+/* SCENE & BAKGRUNN */
+
+/* Fullscreen wrapper – fyller hele skjermen */
+.scene-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Selve scenen som alt inni ligger i */
+.scene {
+  position: relative;
+  width: 100vw;   /* fyller hele skjermen */
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Bakgrunnsbilde */
+.bakgrunn {
+  position: absolute;
+  inset: 0;
+  background-image: url(/images/frisoorrobot/salongbilde.jpg);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+
+/* JENTA I STOLEN (BAKFRA) */
+
+.jente-bak {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+/* LANGT HÅR – synlig i starten */
+.langt-har {
+  width: 150px;
+  height: 240px;
+  background: #c66a00;
+  border-radius: 80px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 21;
+  opacity: 1;
+
+  /* Forsvinner etter klipp (etter har-fall) */
+  animation: hideLongHair 0.8s ease-out forwards 20.5s;
+}
+
+@keyframes hideLongHair {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* KORT HAR – dukker opp etter klipp */
+.kort-har {
+  width: 150px;
+  height: 120px;
+  background: #c66a00;
+  border-radius: 60px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 21;
+  opacity: 0;
+
+  animation: 
+  showShortHair 1s ease-out 21.3s forwards,
+    hideShortHair 1s ease-out 23s forwards;
+}
+
+@keyframes showShortHair {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes hideShortHair {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+  /* ROBOT-SCENENE (før klippet) */
+
+
+/* 1) ROBOTEN KOMMER INN FORFRA */
+
+.robot-forside {
+  position: absolute;
+  bottom: -3%;
+  right: -30%;              
+  width: 55vw;
+  max-width: 600px;
+  z-index: 30;
+opacity: 0;
+  animation:
+    robot-enter 2s ease-out 3s forwards ,    
+    robot-front-hide 3.5s steps(1) 5s forwards ; 
+}
+
+.robot-forside img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes robot-enter {
+  0%   { right: -40%; opacity: 1; }
+  60%  { right: 10%;  opacity: 1; }
+  100% { right: 27%;  opacity: 1; }
+}
+
+@keyframes robot-front-hide {
+  from { opacity: 1; visibility: visible;}
+  to   { opacity: 0; visibility: hidden;}
+}
+
+/* ROBOTEN SNUR SEG */
+
+.robot-snu {
+  position: absolute;
+  right: 30%;
+  bottom: 3%;
+  width: 55vw;
+  max-width: 600px;
+  opacity: 0;
+  z-index: 32;
+
+  animation:
+    robotTurnAppear 0.1s ease-out 8.5s forwards ,
+    robotTurnDisappear 0s steps(1) 12s forwards ;
+}
+
+.robot-snu img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes robotTurnAppear {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes robotTurnDisappear {
+  from { opacity: 1; visibility: visible; }
+  to   { opacity: 0; visibility: hidden; }
+}
+
+/* ROBOT MED SAKS */
+
+.robot-saks {
+  position: absolute;
+  right: 30%;
+  bottom: 3%;
+  width: 55vw;
+  max-width: 600px;
+  z-index: 34;
+  opacity: 0;
+
+  animation:
+    robotScissorsAppear 0.1s ease-out  12.1s forwards,
+    robotScissorsDisappear 0s steps(1) 14s forwards;
+}
+
+.robot-saks img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes robotScissorsAppear {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes robotScissorsDisappear {
+  from { opacity: 1;visibility: visible; }
+  to   { opacity: 0;visibility: hidden;}
+}
+
+
+ /* KLIPPER-ROBOT + HÅR KLIPP */
+
+/*  KLIPPER-ROBOT */
+
+.robot-klipper {
+  position: absolute;
+  right: 30%;
+  bottom: 3%;
+  width: 55vw;
+  max-width: 600px;
+  opacity: 0;
+  z-index: 36;
+
+  /* Kommer etter saks-robot, klipper, så forsvinner */
+
+ animation:
+    robotClipperAppear 1.3s ease-out 14.1s forwards ,
+    clipperMove 0.2s ease-in-out 17.5s infinite ,
+    robotClipperHide 1.5s steps(1) 22.4s forwards ;
+}
+
+.robot-klipper img {
+  width: 100%;
+  display: block;
+}
+
+@keyframes robotClipperAppear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* klipperen beveger seg side til side */
+@keyframes clipperMove {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-12px); }
+  100% { transform: translateX(0); }
+}
+
+/* klipperroboten forsvinner til venstre */
+@keyframes robotClipperHide {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-30px); }
+}
+
+
+  /* HÅR SOM FALLER */
+
+
+.har-fall {
+  position: absolute;
+  top: 42%;
+  width: 10px;
+  height: 16px;
+  background: #e36a0e;
+  border-radius: 3px;
+  opacity: 0;
+  z-index: 30;
+}
+
+/* Hår fall med bevegelse og rotasjon */
+.har-container {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+.har-fall {
+  position: absolute;
+  top: 42%;
+  width: 10px;
+  height: 16px;
+  background: #e36a0e;
+  border-radius: 3px;
+  opacity: 0;
+  z-index: 30;
+}
+
+/* Hår fall-bevegelse */
+@keyframes harFallRealistic {
+  0%   { opacity: 1; transform: translate(0,0) rotate(var(--start-rot)); }
+  20%  { transform: translate(var(--sway1), 60px)  rotate(var(--mid-rot1)); }
+  45%  { transform: translate(var(--sway2), 140px) rotate(var(--mid-rot2)); }
+  70%  { transform: translate(var(--sway3), 210px) rotate(var(--mid-rot3)); }
+  100% { opacity: 1; transform: translate(var(--sway4), 290px) rotate(var(--end-rot)); }
+}
+
+
+/* Hår forsvinner når det treffer bakken */
+@keyframes harFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+/* 20 hårbiter – forskjellige posisjoner og starttider */
+.fall1 {
+  left: 43%;
+  width: 7px; height: 14px;
+  background: #b86405;
+  --start-rot: -5deg; --mid-rot1: 10deg; --mid-rot2: 22deg; --mid-rot3: 30deg; --end-rot: 40deg;
+  --sway1: -6px; --sway2: 12px; --sway3: -18px; --sway4: 20px;
+  animation: harFallRealistic 2.9s ease-in 18.0s forwards, harFadeOut 1s ease-out 20.9s forwards;
+}
+.fall2 {
+  left: 47%;
+  width: 9px; height: 16px;
+  background: #cf720b;
+  --start-rot: 3deg; --mid-rot1: 15deg; --mid-rot2: 18deg; --mid-rot3: 26deg; --end-rot: 35deg;
+  --sway1: -12px; --sway2: 14px; --sway3: -10px; --sway4: 25px;
+  animation: harFallRealistic 3.4s ease-in 18.1s forwards, harFadeOut 1s ease-out 21.5s forwards;
+}
+.fall3 {
+  left: 50%;
+  width: 8px; height: 15px;
+  background: #bd6307;
+  --start-rot: -2deg; --mid-rot1: 12deg; --mid-rot2: 20deg; --mid-rot3: 34deg; --end-rot: 47deg;
+  --sway1: -8px; --sway2: 10px; --sway3: -14px; --sway4: 16px;
+  animation: harFallRealistic 3.0s ease-in 18.2s forwards, harFadeOut 1s ease-out 21.2s forwards;
+}
+.fall4 {
+  left: 53%;
+  width: 10px; height: 17px;
+  background: #d8790c;
+  --start-rot: 1deg; --mid-rot1: 14deg; --mid-rot2: 28deg; --mid-rot3: 31deg; --end-rot: 48deg;
+  --sway1: -14px; --sway2: 8px; --sway3: -20px; --sway4: 22px;
+  animation: harFallRealistic 3.5s ease-in 18.3s forwards, harFadeOut 1s ease-out 21.6s forwards;
+}
+.fall5 {
+  left: 56%;
+  width: 9px; height: 15px;
+  background: #a95804;
+  --start-rot: -6deg; --mid-rot1: 18deg; --mid-rot2: 24deg; --mid-rot3: 33deg; --end-rot: 50deg;
+  --sway1: -16px; --sway2: 16px; --sway3: -8px; --sway4: 18px;
+  animation: harFallRealistic 3.1s ease-in 18.4s forwards, harFadeOut 1s ease-out 21.5s forwards;
+}
+.fall6 {
+  left: 42%;
+  width: 7px; height: 13px;
+  background: #bf6a09;
+  --start-rot: 4deg; --mid-rot1: 8deg; --mid-rot2: 26deg; --mid-rot3: 28deg; --end-rot: 40deg;
+  --sway1: -10px; --sway2: 12px; --sway3: -16px; --sway4: 24px;
+  animation: harFallRealistic 3.2s ease-in 18.5s forwards, harFadeOut 1s ease-out 21.7s forwards;
+}
+.fall7 {
+  left: 49%;
+  width: 8px; height: 16px;
+  background: #c46f0a;
+  --start-rot: -3deg; --mid-rot1: 16deg; --mid-rot2: 30deg; --mid-rot3: 33deg; --end-rot: 48deg;
+  --sway1: -6px; --sway2: 8px; --sway3: -18px; --sway4: 26px;
+  animation: harFallRealistic 2.7s ease-in 18.6s forwards, harFadeOut 1s ease-out 21.3s forwards;
+}
+.fall8 {
+  left: 52%;
+  width: 9px; height: 14px;
+  background: #b36005;
+  --start-rot: 2deg; --mid-rot1: 10deg; --mid-rot2: 22deg; --mid-rot3: 35deg; --end-rot: 42deg;
+  --sway1: -14px; --sway2: 18px; --sway3: -22px; --sway4: 18px;
+  animation: harFallRealistic 3.3s ease-in 18.7s forwards, harFadeOut 1s ease-out 21.8s forwards;
+}
+.fall9 {
+  left: 45%;
+  width: 8px; height: 15px;
+  background: #d1780c;
+  --start-rot: -4deg; --mid-rot1: 12deg; --mid-rot2: 24deg; --mid-rot3: 32deg; --end-rot: 44deg;
+  --sway1: -8px; --sway2: 6px; --sway3: -12px; --sway4: 20px;
+  animation: harFallRealistic 3.1s ease-in 18.8s forwards, harFadeOut 1s ease-out 21.9s forwards;
+}
+.fall10 {
+  left: 58%;
+  width: 10px; height: 18px;
+  background: #cc6d09;
+  --start-rot: 5deg; --mid-rot1: 18deg; --mid-rot2: 32deg; --mid-rot3: 38deg; --end-rot: 52deg;
+  --sway1: -12px; --sway2: 14px; --sway3: -26px; --sway4: 24px;
+  animation: harFallRealistic 3.4s ease-in 18.9s forwards, harFadeOut 1s ease-out 22.3s forwards;
+}
+.fall11 {
+  left: 43%;
+  width: 7px; height: 15px;
+  background: #b85f06;
+  --start-rot: -4deg; --mid-rot1: 14deg; --mid-rot2: 28deg; --mid-rot3: 36deg; --end-rot: 50deg;
+  --sway1: -10px; --sway2: 16px; --sway3: -22px; --sway4: 28px;
+  animation: harFallRealistic 3.5s ease-in 19.0s forwards, harFadeOut 1s ease-out 22.4s forwards;
+}
+.fall12 {
+  left: 48%;
+  width: 9px; height: 17px;
+  background: #cb740a;
+  --start-rot: 3deg; --mid-rot1: 12deg; --mid-rot2: 26deg; --mid-rot3: 32deg; --end-rot: 45deg;
+  --sway1: -6px; --sway2: 14px; --sway3: -16px; --sway4: 18px;
+  animation: harFallRealistic 3.1s ease-in 19.1s forwards, harFadeOut 1s ease-out 22.2s forwards;
+}
+.fall13 {
+  left: 51%;
+  width: 8px; height: 14px;
+  background: #a95704;
+  --start-rot: -2deg; --mid-rot1: 18deg; --mid-rot2: 24deg; --mid-rot3: 30deg; --end-rot: 42deg;
+  --sway1: -14px; --sway2: 10px; --sway3: -18px; --sway4: 20px;
+  animation: harFallRealistic 2.9s ease-in 19.2s forwards, harFadeOut 1s ease-out 22.1s forwards;
+}
+.fall14 {
+  left: 55%;
+  width: 10px; height: 16px;
+  background: #db7c0e;
+  --start-rot: 4deg; --mid-rot1: 15deg; --mid-rot2: 30deg; --mid-rot3: 40deg; --end-rot: 55deg;
+  --sway1: -18px; --sway2: 16px; --sway3: -24px; --sway4: 22px;
+  animation: harFallRealistic 3.3s ease-in 19.3s forwards, harFadeOut 1s ease-out 22.3s forwards;
+}
+.fall15 {
+  left: 46%;
+  width: 7px; height: 13px;
+  background: #bf6307;
+  --start-rot: -5deg; --mid-rot1: 10deg; --mid-rot2: 26deg; --mid-rot3: 34deg; --end-rot: 44deg;
+  --sway1: -8px; --sway2: 6px; --sway3: -20px; --sway4: 18px;
+  animation: harFallRealistic 2.7s ease-in 19.4s forwards, harFadeOut 1s ease-out 22.2s forwards;
+}
+.fall16 {
+  left: 50%;
+  width: 9px; height: 17px;
+  background: #c96d09;
+  --start-rot: 3deg; --mid-rot1: 17deg; --mid-rot2: 28deg; --mid-rot3: 38deg; --end-rot: 50deg;
+  --sway1: -12px; --sway2: 20px; --sway3: -16px; --sway4: 26px;
+  animation: harFallRealistic 3.2s ease-in 19.5s forwards, harFadeOut 1s ease-out 22.5s forwards;
+}
+.fall17 {
+  left: 54%;
+  width: 8px; height: 15px;
+  background: #b05a05;
+  --start-rot: -3deg; --mid-rot1: 12deg; --mid-rot2: 22deg; --mid-rot3: 32deg; --end-rot: 46deg;
+  --sway1: -16px; --sway2: 10px; --sway3: -20px; --sway4: 18px;
+  animation: harFallRealistic 3.0s ease-in 19.6s forwards, harFadeOut 1s ease-out 22.6s forwards;
+}
+.fall18 {
+  left: 41%;
+  width: 9px; height: 17px;
+  background: #cc6c09;
+  --start-rot: 6deg; --mid-rot1: 20deg; --mid-rot2: 32deg; --mid-rot3: 42deg; --end-rot: 55deg;
+  --sway1: -20px; --sway2: 18px; --sway3: -26px; --sway4: 30px;
+  animation: harFallRealistic 3.4s ease-in 19.7s forwards, harFadeOut 1s ease-out 22.8s forwards;
+}
+.fall19 {
+  left: 57%;
+  width: 8px; height: 14px;
+  background: #b76108;
+  --start-rot: -6deg; --mid-rot1: 14deg; --mid-rot2: 26deg; --mid-rot3: 36deg; --end-rot: 49deg;
+  --sway1: -10px; --sway2: 14px; --sway3: -18px; --sway4: 26px;
+  animation: harFallRealistic 3.1s ease-in 19.8s forwards, harFadeOut 1s ease-out 22.9s forwards;
+}
+.fall20 {
+  left: 52%;
+  width: 7px; height: 15px;
+  background: #aa5604;
+  --start-rot: 2deg; --mid-rot1: 18deg; --mid-rot2: 30deg; --mid-rot3: 34deg; --end-rot: 46deg;
+  --sway1: -14px; --sway2: 12px; --sway3: -24px; --sway4: 22px;
+  animation: harFallRealistic 2.8s ease-in 19.9s forwards, harFadeOut 1s ease-out 22.8s forwards;
+}
+
+
+
+  /* SLUTTSCENE – ROBOT + JENTE + SMILEJENTE */
+
+/* Robot på venstre side i sluttbildet */
+.robot-slutt {
+  position: absolute;
+  left: 12%;
+  bottom: 3%;
+  width: 45vw;
+  max-width: 600px;
+  opacity: 0;
+  z-index: 40;
+
+  animation:
+    robotFinalAppear 0.2s steps(1) 24s forwards,
+    robotFinalExit   1.5s ease-in  26s forwards;
+}
+
+.robot-slutt img {
+  width: 100%;
+}
+
+/* robot vises og går ut til venstre */
+@keyframes robotFinalAppear {
+  from { opacity: 1; transform: translateX(-15px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes robotFinalExit {
+  from { left: 12%; opacity: 1; }
+  to   { left: -50%; opacity: 1; }
+}
+
+/* Jenta etter klipp, på høyre side – forsvinner før smilejenta tar over */
+
+.jente-slutt {
+  position: absolute;
+  right: 12%;
+  bottom: 3%;
+  width: 23vw;
+  max-width: 350px;
+  opacity: 0;
+  z-index: 40;
+
+  animation:
+    girlFinalAppear   0.2s steps(1) 24s forwards,
+    girlFinalFadeOut  1.0s steps(1) 26s forwards;
+}
+
+.jente-slutt img {
+  width: 100%;
+}
+
+@keyframes girlFinalAppear {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes girlFinalFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Smilejenta – Ender opp på midten */
+
+.jente-smil {
+  position: absolute;
+  right: 12%;            
+  bottom: 3%;
+  width: 23vw;
+  max-width: 450px;
+  opacity: 0;
+  z-index: 45;
+
+  animation:
+    smileAppear   0s steps(1) forwards 27s,
+    smileGoMiddle 1.8s ease-out forwards 28.4s;
+}
+
+.jente-smil img {
+  width: 100%;
+}
+
+@keyframes smileAppear {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Ender på midten og blir sluttscene */
+@keyframes smileGoMiddle {
+  from { right: 12%; transform: translateX(0); }
+  to   { right: 50%; transform: translateX(50%); }
+}

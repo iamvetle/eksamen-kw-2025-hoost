@@ -1,0 +1,23 @@
+
+/* Styler tilbakeknappen som brukes på gjevnt nettsiden */
+#back-button {
+	position: absolute;
+	top: 80px;
+	left: 80px;
+
+	width: 40px;
+
+	z-index: 100;
+}
+
+
+/* Importerer fonter som blir brukt på nettsiden */
+@font-face {
+	font-family: "Inter";
+	src: url(/fonts/Inter/Inter-VariableFont_opsz,wght.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "Fira Code";
+	src: url(/fonts/Fira_Code/FiraCode-VariableFont_wght.ttf) format("truetype");
+}
