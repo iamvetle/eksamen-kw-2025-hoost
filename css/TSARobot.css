@@ -1,5 +1,6 @@
 body {
   background-color: cadetblue;
+}
 
   /*Stil til kontainer*/
   .boks {
@@ -196,7 +197,6 @@ body {
   .boks:hover .TSAnavleringMetall {
     animation: metallIkkeLov 5s ease-in-out infinite;
   }
-}
 
 /*Animasjon av fly som flyr over skyene i vinduet*/
 @keyframes flyingPlane {
