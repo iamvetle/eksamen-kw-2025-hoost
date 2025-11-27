@@ -241,12 +241,12 @@
         background-size: cover;  
         background-repeat: no-repeat;
         background-position: center;
-        perspective: 1000px;
         position: relative;
         z-index: 3;
     }   
     /*bil kontaineren som kjører fra høyre til venstre*/
     .bil-container {
+        cursor: pointer;
         width: 15%;
         height: 15%;
         position: absolute;
@@ -272,6 +272,8 @@
     }
     /*bil kontaineren som kjører fra venstre til høyre*/
     .bil-container2 {
+
+        cursor: pointer;
         width: 15%;
         height: 15%;
         position: absolute;
@@ -320,7 +322,7 @@
         top:65%;
         left: 46%;
         z-index: 20;
-
+        cursor: pointer;
     }
     /*Viser hva som skjer med roboten hvis man trykker på den, gjør at robotøyene blir røde*/
     .robot-container:active {
@@ -340,7 +342,6 @@
         font-weight: bold;
         font-size: 16px;
         white-space: nowrap; /* Hindrer at teksten brytes til flere linjer */
-        pointer-events: none; /* Musen ignorerer teksten (klikker rett igjennom) */
     }
 
     /*Robot fly kontaineren uten roboten inni*/
@@ -359,6 +360,8 @@
         animation-duration: 20s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
+        cursor: pointer;
+
     }
     /*Robot fly kontainer hover, gjør at roboten vises når man fører musen over robotflyet*/
     .robotfly-container:hover {

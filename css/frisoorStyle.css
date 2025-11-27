@@ -232,9 +232,102 @@ opacity: 0;
   to   { opacity: 0; transform: translateX(-30px); }
 }
 
+  /* SLUTTSCENE – ROBOT + JENTE + SMILEJENTE */
 
-  /* HÅR SOM FALLER */
+/* Robot på venstre side i sluttbildet */
+.robot-slutt {
+  position: absolute;
+  left: 12%;
+  bottom: 3%;
+  width: 45vw;
+  max-width: 600px;
+  opacity: 0;
+  z-index: 40;
 
+  animation:
+    robotFinalAppear 0.2s steps(1) 24s forwards,
+    robotFinalExit   1.5s ease-in  26s forwards;
+}
+
+.robot-slutt img {
+  width: 100%;
+}
+
+/* robot vises og går ut til venstre */
+@keyframes robotFinalAppear {
+  from { opacity: 1; transform: translateX(-15px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes robotFinalExit {
+  from { left: 12%; opacity: 1; }
+  to   { left: -50%; opacity: 1; }
+}
+
+/* Jenta etter klipp, på høyre side – forsvinner før smilejenta tar over */
+
+.jente-slutt {
+  position: absolute;
+  right: 12%;
+  bottom: 3%;
+  width: 23vw;
+  max-width: 350px;
+  opacity: 0;
+  z-index: 40;
+
+  animation:
+    girlFinalAppear   0.2s steps(1) 24s forwards,
+    girlFinalFadeOut  1.0s steps(1) 26s forwards;
+}
+
+.jente-slutt img {
+  width: 100%;
+}
+
+@keyframes girlFinalAppear {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes girlFinalFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Smilejenta – Ender opp på midten */
+
+.jente-smil {
+  position: absolute;
+  right: 12%;            
+  bottom: 3%;
+  width: 23vw;
+  max-width: 450px;
+  opacity: 0;
+  z-index: 45;
+
+  animation:
+    smileAppear   0s steps(1) forwards 27s,
+    smileGoMiddle 1.8s ease-out forwards 28.4s;
+}
+
+.jente-smil img {
+  width: 100%;
+}
+
+@keyframes smileAppear {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Ender på midten og blir sluttscene */
+@keyframes smileGoMiddle {
+  from { right: 12%; transform: translateX(0); }
+  to   { right: 50%; transform: translateX(50%); }
+}
+
+/* HÅR SOM FALLER */
+
+/* Alt nedover har jeg brukt AI på */
 
 .har-fall {
   position: absolute;
@@ -280,6 +373,8 @@ opacity: 0;
   from { opacity: 1; }
   to   { opacity: 0; }
 }
+
+
 /* 20 hårbiter – forskjellige posisjoner og starttider */
 .fall1 {
   left: 43%;
@@ -440,99 +535,4 @@ opacity: 0;
   --start-rot: 2deg; --mid-rot1: 18deg; --mid-rot2: 30deg; --mid-rot3: 34deg; --end-rot: 46deg;
   --sway1: -14px; --sway2: 12px; --sway3: -24px; --sway4: 22px;
   animation: harFallRealistic 2.8s ease-in 19.9s forwards, harFadeOut 1s ease-out 22.8s forwards;
-}
-
-
-
-  /* SLUTTSCENE – ROBOT + JENTE + SMILEJENTE */
-
-/* Robot på venstre side i sluttbildet */
-.robot-slutt {
-  position: absolute;
-  left: 12%;
-  bottom: 3%;
-  width: 45vw;
-  max-width: 600px;
-  opacity: 0;
-  z-index: 40;
-
-  animation:
-    robotFinalAppear 0.2s steps(1) 24s forwards,
-    robotFinalExit   1.5s ease-in  26s forwards;
-}
-
-.robot-slutt img {
-  width: 100%;
-}
-
-/* robot vises og går ut til venstre */
-@keyframes robotFinalAppear {
-  from { opacity: 1; transform: translateX(-15px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes robotFinalExit {
-  from { left: 12%; opacity: 1; }
-  to   { left: -50%; opacity: 1; }
-}
-
-/* Jenta etter klipp, på høyre side – forsvinner før smilejenta tar over */
-
-.jente-slutt {
-  position: absolute;
-  right: 12%;
-  bottom: 3%;
-  width: 23vw;
-  max-width: 350px;
-  opacity: 0;
-  z-index: 40;
-
-  animation:
-    girlFinalAppear   0.2s steps(1) 24s forwards,
-    girlFinalFadeOut  1.0s steps(1) 26s forwards;
-}
-
-.jente-slutt img {
-  width: 100%;
-}
-
-@keyframes girlFinalAppear {
-  from { opacity: 0; transform: translateX(10px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes girlFinalFadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-
-/* Smilejenta – Ender opp på midten */
-
-.jente-smil {
-  position: absolute;
-  right: 12%;            
-  bottom: 3%;
-  width: 23vw;
-  max-width: 450px;
-  opacity: 0;
-  z-index: 45;
-
-  animation:
-    smileAppear   0s steps(1) forwards 27s,
-    smileGoMiddle 1.8s ease-out forwards 28.4s;
-}
-
-.jente-smil img {
-  width: 100%;
-}
-
-@keyframes smileAppear {
-  from { opacity: 0; transform: translateX(10px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Ender på midten og blir sluttscene */
-@keyframes smileGoMiddle {
-  from { right: 12%; transform: translateX(0); }
-  to   { right: 50%; transform: translateX(50%); }
 }
